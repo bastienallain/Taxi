@@ -1,111 +1,154 @@
-export const HomeHero = () => {
+"use client";
+import React, { useState, useEffect } from "react";
+import { Button, Input, Modal, Select, SelectItem } from "@nextui-org/react";
+import Calcul from "../distance/calcul";
+interface HomeHeroProps {
+  onFormSubmit: (formState: {
+    depart: string;
+    arrivee: string;
+    typeVehicule: string;
+    date: string;
+    heure: string;
+  }) => void;
+}
+export const HomeHero = ({ onFormSubmit }: HomeHeroProps) => {
+  const [formState, setFormState] = useState({
+    depart: "",
+    arrivee: "",
+    typeVehicule: "",
+    date: "",
+    heure: "",
+  });
+  const [isModalOpen, setIsModalOpen] = useState(false); // État pour la modal
+  const [tarif, setTarif] = useState<number | null>(null); // État pour le tarif
+
+  const handleChange = (e: { target: { name: any; value: any } }) => {
+    const { name, value } = e.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+  const vehicleTypes = [
+    { value: "van", label: "Van" },
+    { value: "eco", label: "Éco" },
+    { value: "berline", label: "Berline" },
+  ];
+  const handleFormSubmit = (formState: {
+    depart: string;
+    arrivee: string;
+    typeVehicule: string;
+    date: string;
+    heure: string;
+  }) => {
+    onFormSubmit(formState);
+    const tarifCalcule = calculateFare(formState);
+    setTarif(tarifCalcule);
+    setIsModalOpen(true);
+  };
+
   return (
-    <div className="">
-      <img
-        src="/home-bg.jpg"
-        className="absolute inset-0 object-cover w-full h-full"
-        alt=""
-      />
-      <div className="relative ">
-        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-          <div className="flex flex-col items-center justify-between xl:flex-row">
-            <div className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
-              <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
-                The quick, brown fox <br className="hidden md:block" />
-                jumps over a{" "}
-                <span className="text-teal-accent-400">lazy dog</span>
-              </h2>
-              <p className="max-w-xl mb-4 text-base text-gray-400 md:text-lg">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudan, totam rem aperiam, eaque ipsa
-                quae.
-              </p>
-              <a
-                href="/"
-                aria-label=""
-                className="inline-flex items-center font-semibold tracking-wider transition-colors duration-200 text-teal-accent-400 hover:text-teal-accent-700"
-              >
-                Learn more
-                <svg
-                  className="inline-block w-3 ml-2"
-                  fill="currentColor"
-                  viewBox="0 0 12 12"
-                >
-                  <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
-                </svg>
-              </a>
-            </div>
-            <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
-              <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
-                <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
-                  Sign up for updates
-                </h3>
-                <form>
-                  <div className="mb-1 sm:mb-2">
-                    <label
-                      htmlFor="firstName"
-                      className="inline-block mb-1 font-medium"
-                    >
-                      First name
-                    </label>
-                    <input
-                      placeholder="John"
-                      required
-                      type="text"
-                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                      id="firstName"
-                      name="firstName"
-                    />
-                  </div>
-                  <div className="mb-1 sm:mb-2">
-                    <label
-                      htmlFor="lastName"
-                      className="inline-block mb-1 font-medium"
-                    >
-                      Last name
-                    </label>
-                    <input
-                      placeholder="Doe"
-                      required
-                      type="text"
-                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                      id="lastName"
-                      name="lastName"
-                    />
-                  </div>
-                  <div className="mb-1 sm:mb-2">
-                    <label
-                      htmlFor="email"
-                      className="inline-block mb-1 font-medium"
-                    >
-                      E-mail
-                    </label>
-                    <input
-                      placeholder="john.doe@example.org"
-                      required
-                      type="text"
-                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                      id="email"
-                      name="email"
-                    />
-                  </div>
-                  <div className="mt-4 mb-2 sm:mb-4">
-                    <button
-                      type="submit"
-                      className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                    >
-                      Subscribe
-                    </button>
-                  </div>
-                  <p className="text-xs text-gray-600 sm:text-sm">
-                    We respect your privacy. Unsubscribe at any time.
-                  </p>
-                </form>
+    <section className="pt-24 bg-white dark:bg-black">
+      <div className="px-12 mx-auto max-w-7xl">
+        <div className="w-full mx-auto text-left md:w-11/12 xl:w-9/12 md:text-center">
+          <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-normal text-gray-900 dark:text-gray-100 md:text-6xl md:tracking-tight">
+            <span>Voyagez</span>{" "}
+            <span className="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline">
+              avec élégance
+            </span>{" "}
+            <span>dans nos taxis premium</span>
+          </h1>
+          <p className="px-0 mb-8 text-lg text-gray-600 dark:text-gray-200 md:text-xl lg:px-24">
+            Découvrez un service de taxi haut de gamme, confortable et fiable.
+            Réservez dès maintenant et laissez-nous transformer vos trajets en
+            une expérience exceptionnelle.
+          </p>
+        </div>
+        <div className="w-full flex-row mx-auto mt-20 text-center md:w-10/12">
+          <div className="relative z-0 mt-8">
+            <div className="relative overflow-hidden flex flex-col md:flex-row md:space-x-4">
+              <div className="w-full md:w-1/5">
+                <Input
+                  label="Ville de départ"
+                  name="depart"
+                  placeholder="ville de départ"
+                  value={formState.depart}
+                  onChange={handleChange}
+                />
               </div>
+              <div className="w-full md:w-1/5">
+                <Input
+                  label="Ville d'arrivée"
+                  name="arrivee"
+                  placeholder="ville d'arrivée"
+                  value={formState.arrivee}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="w-full md:w-1/5">
+                <Select
+                  label="Type de véhicule"
+                  name="typeVehicule"
+                  placeholder="type de véhicule"
+                  value={formState.typeVehicule}
+                  onChange={handleChange}
+                  className="max-w-xs"
+                >
+                  {vehicleTypes.map((vehicle) => (
+                    <SelectItem key={vehicle.value} value={vehicle.value}>
+                      {vehicle.label}
+                    </SelectItem>
+                  ))}
+                </Select>
+              </div>
+              <div className="w-full md:w-1/5">
+                <Input
+                  label="Date"
+                  name="date"
+                  type="date"
+                  value={formState.date}
+                  onChange={handleChange}
+                />{" "}
+              </div>
+              <div className="w-full md:w-1/5">
+                <Input
+                  label="Heure"
+                  name="heure"
+                  type="time"
+                  value={formState.heure}
+                  onChange={handleChange}
+                />{" "}
+              </div>
+              <div className="w-full md:w-1/5">
+                <Button
+                  onClick={() => handleFormSubmit(formState)}
+                  color="primary"
+                >
+                  Calculer
+                </Button>
+              </div>
+              <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <Calcul formState={formState} />
+                {tarif !== null && (
+                  <div>
+                    Le tarif est : {tarif.toFixed(2)} €. Êtes-vous prêt à
+                    réserver ?
+                  </div>
+                )}
+              </Modal>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
+function calculateFare(formState: {
+  depart: string;
+  arrivee: string;
+  typeVehicule: string;
+  date: string;
+  heure: string;
+}) {
+  throw new Error("Function not implemented.");
+}
