@@ -18,36 +18,26 @@ const images = [
 
 export default function SliderHome() {
   return (
-    <div className="relative w-full h-[300px] md:h-[500px]">
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 5500,
-          disableOnInteraction: false,
-        }}
-        effect={"fade"}
-        speed={1500}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, EffectFade]}
-        className="w-full h-full"
-      >
-        {images.map((imageSrc, index) => (
-          <SwiperSlide
-            key={index}
-            className="w-full h-full flex justify-center items-center"
-          >
-            <img
-              className="w-full h-full"
-              src={imageSrc}
-              alt={`Slide ${index + 1}`}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+    <Swiper
+      spaceBetween={30}
+      centeredSlides={true}
+      autoplay={{
+        delay: 5500,
+        disableOnInteraction: false,
+      }}
+      effect={"fade"}
+      speed={1500}
+      pagination={{
+        clickable: true,
+      }}
+      navigation={true}
+      modules={[Autoplay, EffectFade]}
+    >
+      {images.map((imageSrc, index) => (
+        <SwiperSlide key={index}>
+          <img src={imageSrc} alt={`Slide ${index + 1}`} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }

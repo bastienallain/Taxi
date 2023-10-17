@@ -40,9 +40,9 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className=" flex flex-col">
+          <div>
             <Navbar />
-            <main className=" mx-auto  flex-grow">{children}</main>
+            <main>{children}</main>
             <Footer />
           </div>
         </Providers>

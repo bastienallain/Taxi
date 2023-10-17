@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function HomeHero() {
   return (
-    <section className="relative w-screen h-auto bg-black dark:bg-black bg-[url('/home-bg.webp')] bg-cover bg-bottom">
+    <div className="relative w-screen h-auto bg-black dark:bg-black bg-[url('/home-bg.webp')] bg-cover bg-bottom">
       <div className="absolute inset-0 bg-black opacity-70"></div>
       <div className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-16 max-w-7xl lg:py-24">
         <div className="flex w-full mx-auto text-left">
@@ -47,6 +47,6 @@ export default function HomeHero() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
