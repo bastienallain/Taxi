@@ -10,10 +10,8 @@ export default function SectionServices() {
         <div className="text-gray-600 body-font">
           <div className="container px-5 py-6 mx-auto flex flex-wrap">
             <div className="flex flex-col flex-wrap py-6 w-full pl-4 text-center lg:text-left lg:w-1/2 lg:pl-12">
-              {/* Service 1 : Chauffeurs professionnels */}
               <div className="flex flex-col mb-10 items-center lg:items-start">
                 <div className="w-16 h-16 mx-auto inline-flex items-center justify-center rounded-full bg-primary text-white mb-3 lg:mx-0 lg:w-24 lg:h-24 lg:mb-5">
-                  {" "}
                   <svg
                     className="w-8 h-8 lg:w-12 lg:h-12"
                     viewBox="0 0 24 24"
@@ -41,7 +39,6 @@ export default function SectionServices() {
               </div>
 
               <div className="flex flex-col mb-10 items-center lg:items-start">
-                {" "}
                 <div className="w-16 h-16 mx-auto inline-flex items-center justify-center rounded-full bg-primary text-white mb-3 lg:mx-0 lg:w-24 lg:h-24 lg:mb-5">
                   <svg
                     className="w-8 h-8 lg:w-12 lg:h-12"
@@ -69,7 +66,6 @@ export default function SectionServices() {
                 </div>
               </div>
 
-              {/* Service 3 : Disponibilité 24/7 */}
               <div className="flex flex-col mb-10 items-center lg:items-start">
                 {" "}
                 <div className="w-16 h-16 mx-auto inline-flex items-center justify-center rounded-full bg-primary text-white mb-3 lg:mx-0 lg:w-24 lg:h-24 lg:mb-5">
