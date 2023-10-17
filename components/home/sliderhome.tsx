@@ -5,57 +5,49 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
+import "swiper/css/effect-fade";
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import Image from "next/image";
+import { Autoplay, EffectFade } from "swiper/modules";
+
+// Initialize images
+const images = [
+  "/berline-paris-1.webp",
+  "/passat-noir.webp",
+  "/van-paris-1.webp",
+];
 
 export default function SliderHome() {
   return (
-    <>
+    <div className="relative w-full h-[300px] md:h-[500px]">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 5500,
           disableOnInteraction: false,
         }}
-        loop={true}
+        effect={"fade"}
+        speed={1500}
         pagination={{
           clickable: true,
         }}
-        modules={[Autoplay]}
-        className="mySwiper"
+        navigation={true}
+        modules={[Autoplay, EffectFade]}
+        className="w-full h-full"
       >
-        <SwiperSlide>
-          <Image
-            src="/berline-paris-1.webp"
-            width={500}
-            height={500}
-            alt="Picture of the author"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <Image
-            src="/passat-noir.webp"
-            width={500}
-            height={500}
-            alt="Picture of the author"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <Image
-            src="/van-paris-1.webp"
-            width={500}
-            height={500}
-            alt="Picture of the author"
-          />
-        </SwiperSlide>
+        {images.map((imageSrc, index) => (
+          <SwiperSlide
+            key={index}
+            className="w-full h-full flex justify-center items-center"
+          >
+            <img
+              className="w-full h-full"
+              src={imageSrc}
+              alt={`Slide ${index + 1}`}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
-    </>
+    </div>
   );
 }

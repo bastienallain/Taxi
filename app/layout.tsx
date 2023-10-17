@@ -6,7 +6,7 @@ import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
 import { Link } from "@nextui-org/link";
 import clsx from "clsx";
-import "leaflet/dist/leaflet.css";
+import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -43,6 +43,7 @@ export default function RootLayout({
           <div className=" flex flex-col">
             <Navbar />
             <main className=" mx-auto  flex-grow">{children}</main>
+            <Footer />
           </div>
         </Providers>
       </body>
