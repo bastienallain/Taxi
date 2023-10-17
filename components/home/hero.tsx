@@ -32,11 +32,11 @@ export default function HomeHero() {
 
               <div className="sm:max-w-lg sm:flex md:mx-auto">
                 <p className="mt-3 text-xs text-gray-500">
-                  En réservant, vous acceptez nos&nbsp;
+                  En réservant, vous acceptez nos &nbsp;
                   <Link target="_blank" href="/terms">
                     &nbsp; Conditions Générales &nbsp;
                   </Link>
-                  et notre&nbsp;
+                  et notre &nbsp;
                   <Link target="_blank" href="/privacy">
                     &nbsp; Politique de Confidentialité
                   </Link>
