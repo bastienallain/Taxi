@@ -91,7 +91,7 @@ export default function SectionServices() {
                     Disponibilité 24/7
                   </h2>
                   <p className="leading-relaxed text-lg text-gray-100">
-                    Peu importe l'heure, nous sommes là pour répondre à vos
+                    Peu importe l&apos;heure, nous sommes là pour répondre à vos
                     besoins de déplacement.
                   </p>
                 </div>
