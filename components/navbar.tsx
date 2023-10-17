@@ -31,7 +31,7 @@ export const Navbar = () => {
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo />
-            <p className="font-bold text-inherit">Flash Cab</p>
+            <p className="font-bold text-inherit hidden md:block">Flash Cab</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
@@ -66,11 +66,11 @@ export const Navbar = () => {
             <p className="text-white font-bold">Appelez</p>
             <FaPhoneAlt size={20} className="text-white ml-2" />
           </a>
+          <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <ThemeSwitch />
         <a
           href="tel:+33189480099"
           aria-label="Call us"
@@ -78,7 +78,8 @@ export const Navbar = () => {
         >
           <p className="text-white font-bold">Appelez</p>
           <FaPhoneAlt size={20} className="text-white ml-2" />
-        </a>
+        </a>{" "}
+        <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
 

@@ -23,22 +23,22 @@ export default function HomeHero() {
                     value="Subscribe"
                     name="member[subscribe]"
                     id="member_submit"
-                    className="mx-auto block w-1/3 px-5 py-3 text-base font-medium text-white bg-primary border border-transparent rounded-lg shadow hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300 sm:px-10"
+                    className="mx-auto block w-full md:w-1/3 px-5 py-3 text-base font-medium text-white bg-primary border border-transparent rounded-lg shadow hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300 sm:px-10"
                   >
-                    Réservez Maintenant 2
+                    Réservez Maintenant
                   </button>
                 </a>
               </div>
 
               <div className="sm:max-w-lg sm:flex md:mx-auto">
                 <p className="mt-3 text-xs text-gray-500">
-                  En réservant, vous acceptez nos&#20;
+                  En réservant, vous acceptez nos&nbsp;
                   <Link target="_blank" href="/terms">
-                    &#20; Conditions Générales &#20;
+                    &nbsp; Conditions Générales &nbsp;
                   </Link>
-                  et notre&#20;
+                  et notre&nbsp;
                   <Link target="_blank" href="/privacy">
-                    &#20; Politique de Confidentialité
+                    &nbsp; Politique de Confidentialité
                   </Link>
                   .
                 </p>

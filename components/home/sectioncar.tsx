@@ -3,9 +3,9 @@ import SliderHome from "./sliderhome";
 export default function SectionCar() {
   return (
     <>
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-0 px-4">
-          <div>
+      <div className="container mx-auto md:h-[450px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-0 px-4 md:items-center">
+          <div className="px-4 md:px-12">
             {" "}
             <SliderHome />
           </div>
