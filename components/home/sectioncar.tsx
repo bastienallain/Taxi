@@ -6,11 +6,9 @@ export default function SectionCar() {
       <div className="container mx-auto md:h-[450px]">
         <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-0 px-4 md:items-center">
           <div className="px-4 md:px-12">
-            {" "}
             <SliderHome />
           </div>
           <div>
-            {" "}
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl sm:leading-none">
               un service <br className="hidden md:block" />
               de transport sûr,
@@ -22,7 +20,7 @@ export default function SectionCar() {
               Notre priorité est votre satisfaction et votre sécurité.
             </p>
           </div>
-        </div>{" "}
+        </div>
       </div>
     </>
   );

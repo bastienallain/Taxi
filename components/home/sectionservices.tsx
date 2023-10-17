@@ -1,9 +1,12 @@
+import Image from "next/image";
+
 export default function SectionServices() {
   return (
     <div className="relative">
-      <img
+      <Image
         src="/businessman.jpg"
-        className="absolute inset-0 object-cover w-full h-full"
+        layout="fill"
+        objectFit="cover"
         alt="Chauffeur professionnel"
       />
       <div className="relative bg-gray-900 bg-opacity-60 pt-12">
@@ -67,7 +70,6 @@ export default function SectionServices() {
               </div>
 
               <div className="flex flex-col mb-10 items-center lg:items-start">
-                {" "}
                 <div className="w-16 h-16 mx-auto inline-flex items-center justify-center rounded-full bg-primary text-white mb-3 lg:mx-0 lg:w-24 lg:h-24 lg:mb-5">
                   <svg
                     className="w-8 h-8 lg:w-12 lg:h-12"

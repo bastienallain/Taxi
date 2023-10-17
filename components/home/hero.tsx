@@ -16,7 +16,7 @@ export default function HomeHero() {
                 Réservez un taxi en quelques clics et voyagez en toute sérénité.
               </p>
 
-              <div className="mt-4 sm:mt-0 sm:ml-3 ">
+              <div className="mt-4 sm:mt-0 sm:ml-3">
                 <a href="tel:+33189480099" aria-label="Call us">
                   <button
                     type="submit"
@@ -33,12 +33,16 @@ export default function HomeHero() {
               <div className="sm:max-w-lg sm:flex md:mx-auto">
                 <p className="mt-3 text-xs text-gray-500">
                   En réservant, vous acceptez nos &nbsp;
-                  <Link target="_blank" href="/terms">
-                    &nbsp; Conditions Générales &nbsp;
+                  <Link href="/terms">
+                    <a target="_blank" rel="noopener noreferrer">
+                      Conditions Générales
+                    </a>
                   </Link>
-                  et notre &nbsp;
-                  <Link target="_blank" href="/privacy">
-                    &nbsp; Politique de Confidentialité
+                  &nbsp;et notre&nbsp;
+                  <Link href="/privacy">
+                    <a target="_blank" rel="noopener noreferrer">
+                      Politique de Confidentialité
+                    </a>
                   </Link>
                   .
                 </p>
